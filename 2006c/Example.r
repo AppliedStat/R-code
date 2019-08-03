@@ -1,5 +1,5 @@
 #=========================================================
-source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2009/Rk2.R")
+source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2006c/Rk2.R")
 library(MASS)
 #=========================================================
 
