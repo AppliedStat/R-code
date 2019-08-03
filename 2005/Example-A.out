@@ -1,0 +1,45 @@
+Welcome to R on cspark Computer!
+
+
+=======================
+ Complete Information
+-----------------------
+           AB     P
+lambda1 0.789 0.797
+lambda2 1.183 1.182
+lambda3 0.986 0.986
+
+=======================
+ General Masking
+-----------------------
+           AB     P
+lambda1 0.858 0.867
+lambda2 0.988 0.987
+lambda3 1.113 1.108
+
+=======================
+ Case 1 (Complete Masking)
+-----------------------
+           AB     P
+lambda1 0.657 0.682
+lambda2 1.205 1.202
+lambda3 1.096 1.093
+
+=======================
+ Case 2
+-----------------------
+           AB     P
+lambda1 0.928 0.931
+lambda2 1.044 1.043
+lambda3 0.986 0.986
+
+=======================
+ Case 3
+-----------------------
+           AB     P
+lambda1 0.798 0.813
+lambda2 1.064 1.058
+lambda3 1.096 1.094
+
+   Goodbye!
+

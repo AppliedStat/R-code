@@ -2,7 +2,7 @@
 # Lognormal Distribution Model
 #
 #=========================================================
-source("https://raw.githubusercontent.com/statpnu/R/master/Rs3.R")
+source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2005/Rs3.R")
 #=========================================================
 X = c(
 0.712, 1.629, 0.063, 2.542, 2.237, 2.054, 4.028, 5.487, 2.457, 1.960,

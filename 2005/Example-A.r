@@ -4,7 +4,7 @@
 # Ref 1 = Usher and Hodgson (1988), IEEE Reliability Vol.37 pg. 550 - 555 
 #
 #=========================================================
-source("https://raw.githubusercontent.com/statpnu/R/master/Rs3.R")
+source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2005/Rs3.R")
 #=========================================================
 X1 = c(0.021, 0.038, 0.054, 0.066, 0.076, 0.078, 0.123, 0.130, 0.152, 0.159,
        0.199, 0.201, 0.204, 0.215, 0.218, 0.281, 0.295, 0.310, 0.338, 0.341,
