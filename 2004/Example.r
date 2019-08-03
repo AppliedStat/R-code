@@ -1,9 +1,9 @@
 #=========================================================
-source("https://raw.githubusercontent.com/statpnu/R/master/Rk3.R")
+source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2004/Rk3.R")
 
 ## Neet to install cmprsk package
 ## NB: http://lib.stat.cmu.edu/R/CRAN/web/packages/cmprsk/index.html
-
+##     install.packages("cmprsk")
 library(cmprsk)
 
 #===================================================================

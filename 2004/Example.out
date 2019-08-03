@@ -1,0 +1,46 @@
+Welcome to R on cspark Computer!
+
+
+
+ Table I: Parameter Estimates Without Any Restrictions 
+
+ k = 1 
+             G1
+c1 0.0002009848
+c2 0.0003266003
+
+ k = 2 
+             G1
+c1 0.0005143041
+c2 0.0001928640
+
+ k = 3 
+             G1
+c1 0.0005521811
+c2 0.0001840604
+
+
+ Table II: Parameter Estimates Under H_01, H_02, H_03 
+
+ Under H_01 
+[1] 0.000323634
+
+ Under H_02 
+          c1           c2 
+0.0004057501 0.0002415179 
+
+ Under H_03 
+          G1           G2           G3 
+0.0002637926 0.0003535841 0.0003681207 
+
+
+
+ Table III: Test Statistics and Critical Values
+
+   Test Stat df Critical Values
+S1 13.687274  5       11.070498
+S2  9.326324  4        9.487729
+S3 12.197526  3        7.814728
+
+   Goodbye!
+
