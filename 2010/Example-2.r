@@ -2,7 +2,7 @@
 ## ======================================
 ## Rs4.R file is needed for this example
 ## ======================================
-source("https://raw.githubusercontent.com/AppliedStat/R/master/Rs4.R")
+source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2010/Rs4.R")
 
 ##--------------------------------------------------------------------
 ## Sample 1 (System I)
