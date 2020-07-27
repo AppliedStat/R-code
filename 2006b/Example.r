@@ -5,20 +5,22 @@ source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2006b/Rpp5.R
  M = list(1, 1, 1, 2, 2, 3, 3, 0, c(1,2,3))           # failure modes
  d =    c(1, 1, 1, 2, 2, 3, 3, 0, -1)                 # same as M
 
-#---------------------------
 
- expo.cm.EM(X,M)   # Exponential Model
+#  ---------------------------
+#  We assume that there is full masking in M. 
+   expo.cm.EM(X,M)      # Exponential Model
+   norm.cm.EM(X,M)      # Normal Model
+   norm.cm.EM(log(X),M) # Lognormal Model
+   weibull.cm.EM(X,M)   # Weibull Model
+   wald.cm.EM(X,M)      # Wald (inverse Gaussian) Model (need to be improved)
 
- norm.cm.EM(X,M)   # Normal Model
+#  ---------------------------
+#  We assume that there is partial masking in M. 
+   M = list(1, 1, 0, c(2,3), 2, 3, 3, c(1,2), c(1,2,3)) 
 
- norm.cm.EM(log(X),M) # Lognormal Model
-
- wald.cm.EM(X,M)      # Wald (inverse Gaussian) Model
-
- weibull.cm.EM(X,M)   # Weibull Model
-
-
-#---------------------------
- M = list(1, 1, 0, c(2,3), 2, 3, 3, c(1,2), c(1,2,3))  # With partial masking
- expo.cm.EM(X,M)                          
+   expo.cm.EM(X,M)
+   norm.cm.EM(X,M)      # Normal Model
+   norm.cm.EM(log(X),M) # Lognormal Model
+   weibull.cm.EM(X,M)   # Weibull Model
+   wald.cm.EM(X,M)      # Wald (inverse Gaussian) Model (need to be improved)
 
