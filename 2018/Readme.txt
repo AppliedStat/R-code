@@ -1,9 +1,9 @@
 
-Example-A: Censored normal data
+Example-A: normal data   (right-censored)
 
-Example-B: Censored Laplace data
+Example-B: Laplace data  (right-censored)
 
-Example-C: Censored Rayleigh data
+Example-C: Rayleigh data (right-censored)
 
-Example-D: Censored Weibull data (interval-censored)
+Example-D: Weibull data  (interval-censored)
 
