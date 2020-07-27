@@ -1,5 +1,16 @@
 Welcome to R on cspark Computer!
 
+> 
+> source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2006b/Rpp5.R")
+> 
+>  X = c(1.9, 2.1, 3.2, 1.1, 2.1, 1.0, 2.0, 6.1, 3)     # lifetime observation
+>  M = list(1, 1, 1, 2, 2, 3, 3, 0, c(1,2,3))           # failure modes
+>  d =    c(1, 1, 1, 2, 2, 3, 3, 0, -1)                 # same as M
+> 
+> 
+> #  ---------------------------
+> #  We assume that there is full masking in M. 
+>    expo.cm.EM(X,M)      # Exponential Model
 $lam
 [1] 0.1523711 0.1015919 0.1015925
 
@@ -9,6 +20,7 @@ $iter
 $conv
 [1] TRUE
 
+>    norm.cm.EM(X,M)      # Normal Model
 $mu
 [1] 3.910457 4.966720 5.023747
 
@@ -21,6 +33,7 @@ $iter
 $conv
 [1] TRUE
 
+>    norm.cm.EM(log(X),M) # Lognormal Model
 $mu
 [1] 1.238908 1.668837 1.726280
 
@@ -33,6 +46,20 @@ $iter
 $conv
 [1] TRUE
 
+>    weibull.cm.EM(X,M)   # Weibull Model
+$alpha
+[1] 2.085761 1.439960 1.354573
+
+$lam
+[1] 0.04159372 0.06104005 0.06704726
+
+$iter
+[1] 4
+
+$conv
+[1] TRUE
+
+>    wald.cm.EM(X,M)      # Wald (inverse Gaussian) Model (need to be improved)
 ....................................................................................................
  * Done *
 
@@ -48,18 +75,12 @@ $iter
 $conv
 [1] FALSE
 
-$alpha
-[1] 2.085761 1.439960 1.354573
-
-$lam
-[1] 0.04159372 0.06104005 0.06704726
-
-$iter
-[1] 4
-
-$conv
-[1] TRUE
-
+> 
+> #  ---------------------------
+> #  We assume that there is partial masking in M. 
+>    M = list(1, 1, 0, c(2,3), 2, 3, 3, c(1,2), c(1,2,3)) 
+> 
+>    expo.cm.EM(X,M)
 $lam
 [1] 0.13132260 0.09291004 0.13132292
 
@@ -69,6 +90,63 @@ $iter
 $conv
 [1] TRUE
 
+>    norm.cm.EM(X,M)      # Normal Model
+$mu
+[1] 4.176977 5.000010 4.389696
+
+$sd
+[1] 1.827355 2.201153 2.648724
+
+$iter
+[1] 34
+
+$conv
+[1] TRUE
+
+>    norm.cm.EM(log(X),M) # Lognormal Model
+$mu
+[1] 1.303225 1.637212 1.470733
+
+$sd
+[1] 0.5115524 0.6843491 1.0396780
+
+$iter
+[1] 49
+
+$conv
+[1] TRUE
+
+>    weibull.cm.EM(X,M)   # Weibull Model
+$alpha
+[1] 2.324880 2.068188 1.277285
+
+$lam
+[1] 0.02657034 0.02271350 0.09832056
+
+$iter
+[1] 13
+
+$conv
+[1] TRUE
+
+>    wald.cm.EM(X,M)      # Wald (inverse Gaussian) Model (need to be improved)
+...............................................................................................
+ * Done *
+
+$mu
+[1]  4.170973  7.286764 15.697215
+
+$lam
+[1] 14.531691 10.221484  3.512715
+
+$iter
+[1] 95
+
+$conv
+[1] TRUE
+
+> 
+> 
 
    Goodbye!
 
