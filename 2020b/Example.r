@@ -36,10 +36,11 @@ function(Y, start=1, maxits=1000L, eps=1.0E-15) {
 
 #=====================================================================
 # This data set is from:
-#  Title: Load-sharing system model and its application to thereal data set
+#  Title: Load-sharing system model and its application to the real data set
 #  Authors: Bhupendra Singh, Puneet Kumar Gupta 
-#    http://doi.org/10.1016/j.matcom.2012.02.010
-# See also: http://www.stat.sc.edu/~pena/TechReports/KvamPena2003.pdf
+#  URL: http://doi.org/10.1016/j.matcom.2012.02.010
+# 
+#  Ref.: http://www.stat.sc.edu/~pena/TechReports/KvamPena2003.pdf
 ##--------------------------------------------------------------------
 Y0 = c(21.02, 24.25, 6.55, 15.35, 39.08, 16.2, 34.59, 19.1, 28.22,
 32, 11.25, 17.39, 28.47, 23.42, 42.06, 28.51, 34.56, 40.33, 27.56,
