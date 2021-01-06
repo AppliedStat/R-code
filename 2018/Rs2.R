@@ -411,7 +411,7 @@ function (X, start=1, maxits=500, eps=1E-5) {
       iter  = iter + 1
       lam   = newlam
    }
-   list(scale=1/newlam, lam=newlam, iter=iter, conv=converged )
+   list(lam=newlam, iter=iter, conv=converged )
 }
 #---------------------------------------------------------------------
 # para = c(beta, lam)  #beta=shape, lam=rate
