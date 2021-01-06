@@ -210,7 +210,7 @@ function(y,R,start,maxits=500,eps=.0001,K=1000){
    list(para=theta,iter=iter,conv=converged, out=out)
 }
 
-
+# 
 #=======================================================================
 # Rayleigh Distribution 
 #=======================================================================
@@ -359,7 +359,8 @@ function(y,R,start,maxits=500,eps=.0001,K=1000) {
 
 # INTERVAL-CENSORING 
 #=====================================================================
-#  EM / MCEM / QEM algorithms for interval-censored normal sample
+#  EM / MCEM / QEM algorithms for interval-censored
+#                  from exponential, normal and Weibull
 #---------------------------------------------------------------------
 #
 #  Required arguments:
@@ -410,7 +411,42 @@ function (X, start=1, maxits=500, eps=1E-5) {
       iter  = iter + 1
       lam   = newlam
    }
-   list( lam=newlam, iter=iter, conv=converged )
+   list(scale=1/newlam, lam=newlam, iter=iter, conv=converged )
+}
+#---------------------------------------------------------------------
+# para = c(beta, lam)  #beta=shape, lam=rate
+loglikelihood.Weibull <- function(para, X) {
+   n = dim(X)[1]
+   if ( dim(X)[2] > 2 ) stop (" The data X should be n x 2 matrix");
+   TINY = .Machine$double.eps
+   beta = para[1]
+   lam  = para[2]
+   theta = lam^(-1/beta)
+   loglike = 0
+   for ( i in seq_len(n) ) {
+       a = X[i,1]; b = X[i,2];
+       tmp = ifelse( abs(a-b) < TINY, dweibull(a, shape=beta, scale=theta, log=TRUE),
+               log( pweibull(b,shape=beta,scale=theta)-pweibull(a,shape=beta,scale=theta) ) )
+       loglike = loglike + tmp
+   }
+   return(loglike)
+}
+#---
+negative.loglikelihood.Weibull <-  function(para, X) { -loglikelihood.Weibull(para,X) } 
+#---
+likelihood.Weibull <- function(para, X) { exp(loglikelihood.Weibull(para,X)) }
+#---
+repara <- function(para) { 
+  if( is.list(para) ) {
+      shape = para$beta
+      scale = para$lam^(-1/shape)
+  } else {
+      shape = para[1]
+      scale = para[2]^(-1/shape)
+  }
+  newpara = c(shape, scale)
+  names(newpara) = c("shape", "scale") 
+  return(newpara)
 }
 #---------------------------------------------------------------------
 
