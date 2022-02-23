@@ -558,6 +558,61 @@ function(X, beta0=1, lam0=1, maxits=1000, eps=1E-3, K=100){
    list( beta=newbeta, lam=newlam, iter=iter, conv=converged )
 }
 #------------------------------------------------------------------
+# MCEM 
+ic.weibull.MCEM <-
+function(X, beta0=1, lam0=1, maxits=1000, eps=1E-3, K=100){
+   beta = beta0
+   lam   = lam0
+   ij = dim(X)
+   n  = ij[1]
+   if ( ij[2] > 2 ) stop (" The data X should be n x 2 matrix");
+   iter = 0
+   converged = FALSE
+
+   # Start the EM
+   TINY = .Machine$double.eps
+   HUGE = .Machine$double.xmax^0.5
+   ## xi   = (1:K-.5)/K
+   xi = sort( runif(K) )   #<------
+   EEbeta = function(beta, qik) {
+          qbeta = qik^beta
+          1/beta + mean(log(qik)) - sum(qbeta*log(qik))/sum(qbeta)
+   }
+   while( (iter<maxits)&(!converged) ) {
+      qik  = array(0, dim=c(n,K) )
+      for ( i in 1:n ) {
+          a = X[i,1]; b = X[i,2];
+          if ( abs(a-b) < TINY ) {
+             qik[i,] = rep(a, K)
+          } else if ( b > HUGE  ) {
+             qik[i,] = (-1/lam * (log(1-xi)-lam*a^beta) )^(1/beta)
+          } else if ( a <= 0  ) {
+             qik[i,] = (-1/lam*log((1-xi) + xi*exp(-lam*b^beta)) )^(1/beta)
+          } else {
+             qik[i,] = (-1/lam*log((1-xi)*exp(-lam*a^beta)+xi*exp(-lam*b^beta)) )^(1/beta)
+          }
+      }
+      qmax = max(qik)
+      lower = 1 / mean( log(qmax) - log(qik) )
+      upper =  1 / (1/lower - EEbeta(lower, qik))
+      tmp = uniroot( EEbeta, interval=c(lower,upper), qik=qik)
+
+      newbeta = tmp$root
+      newlam  = 1 / mean( qik^newbeta)
+      # assess convergence
+      converged = (abs(newbeta-beta)<eps*abs(beta)) & (abs(newlam-lam)<eps*abs(lam))
+      iter = iter+1
+      beta = newbeta
+      lam  = newlam
+      cat(".")
+   }
+   cat("\n * Done * \n\n")
+   list( beta=newbeta, lam=newlam, iter=iter, conv=converged )
+}
+#------------------------------------------------------------------
+
+
+#------------------------------------------------------------------
 
 
 #=====================================================================
