@@ -18,7 +18,7 @@ normal.CV = function(data, pvalue=0.05) {
       return( list(pure=data, outlier=y) )
 }
 #---------------------------------------------------------------------
-# Function for splitting normal data and noises using 3*sigma rule
+# Function for splitting normal data and noises using 3*sigma rule with mean and sd
 normal.3sigma.mean = function(data, factor=3) { 
      sigma = sd(data)
      loc   = mean(data)
@@ -26,7 +26,7 @@ normal.3sigma.mean = function(data, factor=3) {
      return( list(pure=data[idx], outlier=data[!idx]) )
 }
 #---------------------------------------------------------------------
-# Function for splitting normal data and noises using 3*sigma rule
+# Function for splitting normal data and noises using 3*sigma rule with HL and Shamos estimators
 normal.HL = function(data, factor=3) { 
      sigma = shamos(data)
      loc   = HL(data)
@@ -34,7 +34,7 @@ normal.HL = function(data, factor=3) {
      return( list(pure=data[idx], outlier=data[!idx]) )
 }
 #---------------------------------------------------------------------
-# Function for splitting normal data and noises using 3*sigma rule
+# Function for splitting normal data and noises using 3*sigma rule with median and MAD estimators
 normal.median = function(data, factor=3) {     
      sigma = mad(data)
      loc   = median(data)
@@ -58,6 +58,7 @@ normal.box = function(data, factor=1.5) {
 
 
 #=====================================================================
+# Generalized Mean Square Error
 gMSE = function(x,y, mux, muy) {
    N = length(x)
    a11 = sum( (x-mux)^2 )
@@ -75,6 +76,7 @@ gVAR = function(x,y) {
 
 
 #=====================================================================
+# Shamos estimator
 shamos = function (x, constant = 1.048358, na.rm = FALSE, IncludeEqual = FALSE) 
 {
     if (na.rm) 
@@ -84,6 +86,7 @@ shamos = function (x, constant = 1.048358, na.rm = FALSE, IncludeEqual = FALSE)
     constant * median(w2)
 }
 #=====================================================================
+# Hodges-Lehmann estimator
 HL = function (x, estimator = c("HL1", "HL2", "HL3"), na.rm = FALSE) 
 {
     estimator = match.arg(estimator)
@@ -100,6 +103,7 @@ HL = function (x, estimator = c("HL1", "HL2", "HL3"), na.rm = FALSE)
 
 
 #=====================================================================
+# Random number generation from Gaussian mixture distribution
 rnorm.mix = function(n, means, sds, prob) {
     npara = length(means)
     if (npara != length(sds) ) stop("The numbers of parameters do not match.")
