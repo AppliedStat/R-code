@@ -1,0 +1,10 @@
+Anomaly Detection Using Robust Estimators Under Normal Distribution
+
+* anomaly.R : Collection of R functions
+
+* Example1.r : Illustrative Example 
+  Data are from Wu and Pearn (2008). 
+      A variables sampling plan based on cpmk for product acceptance determination. 
+      European Journal of Operational Research, 184:549-560.
+
+
