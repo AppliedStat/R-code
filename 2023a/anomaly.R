@@ -1,4 +1,3 @@
-
 #=====================================================================
 # Function for splitting normal data and noises using LOO CV idea
 normal.CV = function(data, pvalue=0.05) { 
