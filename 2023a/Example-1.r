@@ -1,5 +1,5 @@
 
-source("https://github.com/AppliedStat/R-code/blob/master/2023a/anomaly.R")
+source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2023a/anomaly.R")
 
 
 # Data set:
@@ -16,16 +16,16 @@ Data = c(
 0.688,0.710,0.707,0.706,0.709,0.729,0.792,0.685,0.686,0.722,0.720,0.715,0.727,
 0.696)
 
+# Shapiro test
+shapiro.test(Data) # No normal. (p-value is so small)
 
-shapiro.test(Data)
-# No normal. (p-value is so small)
-
-
+# Removing outliers
 output = normal.median(Data)
 
 # Data set without anomaly
 output$pure
 
-shapiro.test(output$pure)
+# Shapiro test
+shapiro.test(output$pure) # Normal data
 
 
