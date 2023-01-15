@@ -59,8 +59,8 @@ neg.loglike.weibull = function(para,X) {
 #------------------------------------------------------------------
 gamma.inc.old = function(a,b) { pgamma(b,a,lower.tail=FALSE)*gamma(a) }
 lgamma.inc = function(a,b) {
-    if( a < 0 ) stop("a must be non-negative")
-    if( a == 0 ) a = .Machine$double.xmin
+    ## if( a < 0 ) stop("a must be non-negative")
+    if( a <= 0 ) a = .Machine$double.neg.eps
     return( pgamma(b,a,lower.tail=FALSE,log.p=TRUE) + lgamma(a) )
 }
 gamma.inc = function(a,b) { exp(lgamma.inc(a,b)) }
