@@ -170,9 +170,8 @@ function(X, start=c(1,1), maxits=10000, eps=1E-5){
    }
 
    while( (iter<maxits)&(!converged) ) {
-      ## OPT = nlm(fn, kappa); newkappa = OPT$estimate
-      OPT = nlminb(kappa,fn)
-      newkappa = OPT$par
+      OPT = nlm(fn, kappa); newkappa = OPT$estimate
+      ## OPT = nlminb(kappa,fn); newkappa = OPT$par
     
       meanV.i.s = 0
       for ( i in seq_len(n) ) meanV.i.s = meanV.i.s + V.i.s(newkappa, kappa, theta, ai[i], bi[i])/n
