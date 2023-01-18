@@ -2,7 +2,7 @@
 source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2023a/anomaly.R")
 
 
-# Data set:
+# Data set from: 
 # Wu and Pearn (2008).
 # A variables sampling plan based on cpmk for product acceptance determination.
 # European Journal of Operational Research, 184:549-560.
@@ -20,12 +20,15 @@ Data = c(
 shapiro.test(Data) # No normal. (p-value is so small)
 
 # Removing outliers
+normal.median(Data)
+
+# Save the data 
 output = normal.median(Data)
 
-# Data set without anomaly
+# Data set without outliers
 output$pure
 
 # Shapiro test
-shapiro.test(output$pure) # Normal data
+shapiro.test(output$pure) # Normal data. (p-value is large enough)
 
 

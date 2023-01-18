@@ -19,7 +19,7 @@ normal.median(Data)
 # Save the data 
 output = normal.median(Data)
 
-# Data set without anomaly
+# Data set without outliers
 output$pure
 
 # Shapiro test
