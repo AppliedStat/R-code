@@ -1,4 +1,4 @@
-Anomaly Detection Using Robust Estimators Under Weibull Distribution
+Anomaly Detection Based on Cross Validation Under Weibull Distribution
 
 * Wanomaly.R : Collection of R functions
 
