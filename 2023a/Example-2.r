@@ -13,7 +13,7 @@ Data = c( 43.4, 24,   1.8,  0,   0.1, 170.1,  0.4,  150,  31.5,  5.2,
 # Shapiro test
 shapiro.test(Data) # No normal. (p-value is so small)
 
-# Removing outliers
+# Remove outliers
 normal.median(Data)
 
 # Save the data 

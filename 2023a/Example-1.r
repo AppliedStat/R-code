@@ -19,7 +19,7 @@ Data = c(
 # Shapiro test
 shapiro.test(Data) # No normal. (p-value is so small)
 
-# Removing outliers
+# Remove outliers
 normal.median(Data)
 
 # Save the data 
