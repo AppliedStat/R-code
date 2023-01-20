@@ -2,7 +2,6 @@ Anomaly Detection Based on Cross Validation Under Weibull Distribution
 
 * Wanomaly.R : Collection of R functions
 
-
 # Illustrative Examples
   Data set from Table 1 of Hoel, D. (1972). 
   A representation of mortality data by competing risks. Biometrics 28, 475–488.
@@ -11,3 +10,4 @@ Anomaly Detection Based on Cross Validation Under Weibull Distribution
 
 * Example-2.r (Reticulum Cell Sarcoma)
 
+* Example-3.r (Other causes)
