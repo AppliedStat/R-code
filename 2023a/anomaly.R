@@ -41,6 +41,14 @@ normal.median = function(data, factor=3) {
      idx =  abs(data-loc)/sigma < factor
      return( list(pure=data[idx], outlier=data[!idx]) )
 }
+#---------------------------------------------------------------------
+# Function for splitting normal data and noises using 3*sigma rule with Huber and Qn estimators
+normal.huber = function(data, factor=3, k=1.5) { 
+     sigma = RC(data)
+     loc   = huber(x,k=k)$mu
+     idx =  abs(data-loc)/sigma < factor
+     return( list(pure=data[idx], outlier=data[!idx]) )
+}
 #=====================================================================
 
 
@@ -84,6 +92,13 @@ shamos = function (x, constant = 1.048358, na.rm = FALSE, IncludeEqual = FALSE)
     w1 = outer(x, x, "-")
     w2 = abs(w1[lower.tri(w1, diag = IncludeEqual)])
     constant * median(w2)
+}
+#=====================================================================
+# Qn or RC estimator
+RC <- function(x,d=2.2191444659850758647, IncludeEqual=FALSE) {
+   w1 = outer(x,x, "-")
+   w2 = abs( w1[lower.tri(w1,diag=IncludeEqual)]  )
+   d*quantile(w2,1/4,type=5)
 }
 #=====================================================================
 # Hodges-Lehmann estimator

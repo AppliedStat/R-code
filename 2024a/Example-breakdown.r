@@ -8,12 +8,13 @@ data1 <- c(17.88,  28.92,  33.00,  41.52,  45.12, 45.60, 48.48, 51.84, 51.96,
            54.12,  55.56,  67.80,  68.64,  68.64, 68.88, 84.12, 93.12, 98.64,
           105.12, 105.84, 127.92, 128.04, 173.40)
 
-x = log(sort(data1))
-RM.breakdown.point(x,power=1)
+x = log(data1)
 
-RM.breakdown.point(x,power=1/2)
+RM.breakdown.point(x, power=1)
 
-RM.breakdown.point(x,power=1/4)
+RM.breakdown.point(x, power=1/2)
+
+RM.breakdown.point(x, power=1/4)
 
 
 
@@ -31,9 +32,9 @@ data2 = c(3.70,  7.06,  7.16,  7.46,  7.85,  7.97,  8.44,  8.55,  8.58,  8.86,
          17.63, 17.68, 17.81, 17.82, 17.92, 18.20, 18.68, 18.81, 18.90, 18.93, 
          18.95, 19.10, 19.23, 19.40, 19.45, 20.23, 21.00, 21.30, 22.15, 22.68, 24.4)
 
-RM.breakdown.point(data2,power=1/2)
+RM.breakdown.point(data2, power=1/2)
 
-RM.breakdown.point(data2,power=1/4)
+RM.breakdown.point(data2, power=1/4)
 
-RM.breakdown.point(data2,power=1/8)
+RM.breakdown.point(data2, power=1/8)
 

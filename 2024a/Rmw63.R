@@ -96,6 +96,7 @@ Repeated.W.Median1 <- function (x,y, weight=FALSE, power=1) {
 #------------------------------
 # Breakdown point
 RM.breakdown.point <- function(x, power=1) {
+   x = sort(x)
    n = length(x)
    dx = outer(x,x,"-");
    weight1 = abs(dx)^power 
