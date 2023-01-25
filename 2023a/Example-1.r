@@ -1,6 +1,6 @@
 
 source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2023a/anomaly.R")
-
+library(MASS)
 
 # Data set from: 
 # Wu and Pearn (2008).
@@ -19,11 +19,32 @@ Data = c(
 # Shapiro test
 shapiro.test(Data) # No normal. (p-value is so small)
 
-# Remove outliers
+# ===========================================================================
+# Using median and MAD 
+# ---------------------------------------------------------------------------
+
+# Removing outliers
 normal.median(Data)
 
 # Save the data 
 output = normal.median(Data)
+
+# Data set without outliers
+output$pure
+
+# Shapiro test
+shapiro.test(output$pure) # Normal data. (p-value is large enough)
+
+
+# ===========================================================================
+# Using Huber and RC
+# ---------------------------------------------------------------------------
+
+# Removing outliers
+normal.huber(Data)
+
+# Save the data 
+output = normal.huber(Data)
 
 # Data set without outliers
 output$pure
