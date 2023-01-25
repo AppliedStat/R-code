@@ -45,7 +45,7 @@ normal.median = function(data, factor=3) {
 # Function for splitting normal data and noises using 3*sigma rule with Huber and Qn estimators
 normal.huber = function(data, factor=3, k=1.5) { 
      sigma = RC(data)
-     loc   = huber(x,k=k)$mu
+     loc   = huber(data,k=k)$mu
      idx =  abs(data-loc)/sigma < factor
      return( list(pure=data[idx], outlier=data[!idx]) )
 }
