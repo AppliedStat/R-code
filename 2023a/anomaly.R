@@ -130,6 +130,3 @@ rnorm.mix = function(n, means, sds, prob) {
 
 
 
-
-
-
