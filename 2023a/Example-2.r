@@ -2,16 +2,46 @@
 source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2023a/anomaly.R")
 library(MASS)
 
-# Data set from: 
-# Johnson, R. E. and B. H. McFarland (1993).
-# Antipsychotic Drug Exposure in a Health Maintenance Organization.
-# Medical Care 31(5), 432-444.
-
-Data = c( 43.4, 24,   1.8,  0,   0.1, 170.1,  0.4,  150,  31.5,  5.2,  
-          35.7, 27.3, 5,   64.3, 70,     94, 61.9,  9.1,  38.8, 14.8 )
+##
+##- Short's data (Stigler, 1977, Ann of Stat. v.5, pp.1074)
+##
+Data <- c( 8.65, 8.35, 8.71, 8.31, 8.36, 8.58, 7.80, 7.71, 8.30, 9.71, 
+           8.50, 8.28, 9.87, 8.86, 5.76, 8.44, 8.23) 
 
 # Shapiro test
 shapiro.test(Data) # No normal. (p-value is so small)
+
+
+# ===========================================================================
+# Using 3*sigma rule with mean and sd
+# ---------------------------------------------------------------------------
+
+# Removing outliers
+normal.3sigma.mean(Data)
+
+output = normal.3sigma.mean(Data)
+
+# Data set without outliers
+output$pure
+
+# Shapiro test
+shapiro.test(output$pure) # Normal data. (p-value is large enough)
+
+
+# ===========================================================================
+# Using boxplot
+# ---------------------------------------------------------------------------
+
+# Removing outliers
+normal.box(Data)
+
+output = normal.box(Data)
+
+# Data set without outliers
+output$pure
+
+# Shapiro test
+shapiro.test(output$pure) # Normal data. (p-value is large enough)
 
 # ===========================================================================
 # Using median and MAD 
@@ -27,8 +57,7 @@ output = normal.median(Data)
 output$pure
 
 # Shapiro test
-shapiro.test(output$pure) # Normal data. (p-value is almost 5%)
-
+shapiro.test(output$pure) # Normal data. (p-value is large enough)
 
 
 # ===========================================================================
@@ -47,10 +76,4 @@ output$pure
 # Shapiro test
 shapiro.test(output$pure) # Normal data. (p-value is large enough)
 
-
-
-# ===========================================================================
-# NOTE: The 3-sigma method cannot remove outliers
-# ---------------------------------------------------------------------------
-normal.3sigma.mean(Data)
 
