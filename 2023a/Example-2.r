@@ -3,7 +3,9 @@ source("https://raw.githubusercontent.com/AppliedStat/R-code/master/2023a/anomal
 library(MASS)
 
 ##
-##- Short's data (Stigler, 1977, Ann of Stat. v.5, pp.1074)
+## Short's data set from
+## Stigler, S. M. (1977). Do robust estimators work with real data?
+## Annals of Statistics, Vol.5, pp.1055-1098.
 ##
 Data <- c( 8.65, 8.35, 8.71, 8.31, 8.36, 8.58, 7.80, 7.71, 8.30, 9.71, 
            8.50, 8.28, 9.87, 8.86, 5.76, 8.44, 8.23) 
