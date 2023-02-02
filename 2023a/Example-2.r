@@ -25,7 +25,7 @@ output = normal.3sigma.mean(Data)
 output$pure
 
 # Shapiro test
-shapiro.test(output$pure) # Normal data. (p-value is large enough)
+shapiro.test(output$pure) # Normal data. (p-value is still small)
 
 
 # ===========================================================================
