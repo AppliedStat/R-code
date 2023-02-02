@@ -5,7 +5,7 @@ Anomaly Detection Using Robust Estimators Under Normal Distribution
 
 # Illustrative Examples
 
-* Example-1.r 
+* Example-1.r: Newcomb's light speed data set.
 
-* Example-2.r 
+* Example-2.r: Short's data for the determination of the parallax of the sun.
 
