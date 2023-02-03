@@ -48,6 +48,23 @@ shapiro.test(output$pure) # Normal data. (p-value is large enough)
 
 
 # ===========================================================================
+# Using HL amd Shamos
+# ---------------------------------------------------------------------------
+
+# Removing outliers
+normal.HL(Data)
+
+# Save the data 
+output = normal.HL(Data)
+
+# Data set without outliers
+output$pure
+
+# Shapiro test
+shapiro.test(output$pure) # Normal data. (p-value is large enough)
+
+
+# ===========================================================================
 # Using median and MAD 
 # ---------------------------------------------------------------------------
 
