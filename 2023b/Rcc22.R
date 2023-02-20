@@ -102,12 +102,28 @@ U.i.s = function(kappa.s, theta.s, ai, bi) {
    return( (tmpai-tmpbi)/D.i.s )
 }
 #
-U.i.s.0.inf = function(kappa.s, theta.s) { (log(theta.s) + digamma(1)/kappa.s) }
+U.i.s.0.inf = function(kappa.s, theta.s) { log(theta.s) + digamma(1)/kappa.s }
 #
-# U.i.s (2, 3, 1, Inf)
 # U.i.s (2, 3, 0, Inf);  U.i.s.0.inf(2, 3)
-# U.i.s (2, 3, 3, 3);   U.i.s (2, 3, 3, 3.0001)
+# U.i.s (2, 3, 3, 3);    U.i.s (2, 3, 3, 3.000)
+U.i.s.0.bi   = function(kappa.s, theta.s, bi) { 
+   A = log(theta.s) + digamma(1)/kappa.s  
+   t.bi = (bi/theta.s)^kappa.s
+   tmp = log(bi)*exp(-t.bi) + gamma.inc(0, t.bi)/kappa.s
+   (A - tmp) / (1- exp(-t.bi))
+   ## A  /(1- exp(-t.bi)) - tmp/exp(-t.bi) 
+}
+# U.i.s (2,3, 0.0, 3) ;    U.i.s.0.bi(2,3, 3)
 #
+U.i.s.ai.inf = function(kappa.s, theta.s, ai) { 
+   t.ai = (ai/theta.s)^kappa.s
+   tmp = log(ai)*exp(-t.ai) + gamma.inc(0, t.ai)/kappa.s
+   tmp / exp(-t.ai)
+}
+# U.i.s (2, 3, 1, Inf) ;    U.i.s.ai.inf(2,3,1)
+
+
+#--------------------------------------------------------------------
 # aa = seq(0,1, length=101) ; U  = numeric( length(aa) )
 # for ( i in seq_along(aa) ) U[i] = U.i.s(1, 2, aa[i], 1)
 # plot (aa, U, type="l")
