@@ -128,5 +128,16 @@ rnorm.mix = function(n, means, sds, prob) {
 #=====================================================================
 
 
+#=====================================================================
+# Random number generation from Gaussian mixture distribution
+rnorm.unif.mix = function(n, mean, sd, a, b, eps) {
+    x = numeric(n) 
+    for ( i in seq_len(n) ) {
+        u = runif(1)
+        x[i] = ifelse(u<1-eps, rnorm(1,mean,sd), runif(1,a,b)) 
+    }
+    return(x)
+}
+#=====================================================================
 
 
