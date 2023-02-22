@@ -155,7 +155,7 @@ rnorm.delta.mix = function(n, mean, sd, delta, eps) {
 
 
 #=====================================================================
-# Random number generation from Gaussian and Uniform mixture distribution
+# Random number generation from Gaussian and Cauchy mixture distribution
 rnorm.cauchy.mix = function(n, mean, sd, loc, scale, eps) {
     x = numeric(n)
     for ( i in seq_len(n) ) {
