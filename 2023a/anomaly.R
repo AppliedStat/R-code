@@ -129,7 +129,7 @@ rnorm.mix = function(n, means, sds, prob) {
 
 
 #=====================================================================
-# Random number generation from Gaussian mixture distribution
+# Random number generation from Gaussian and Uniform mixture distribution
 rnorm.unif.mix = function(n, mean, sd, a, b, eps) {
     x = numeric(n) 
     for ( i in seq_len(n) ) {
@@ -142,7 +142,7 @@ rnorm.unif.mix = function(n, mean, sd, a, b, eps) {
 
 
 #=====================================================================
-# Random number generation from Gaussian mixture distribution
+# Random number generation from Gaussian and Delta mixture distribution
 rnorm.delta.mix = function(n, mean, sd, delta, eps) {
     x = numeric(n) 
     for ( i in seq_len(n) ) {
