@@ -1,3 +1,6 @@
+R Codes for Example in the paper (https://doi.org/10.1016/j.jspi.2004.12.016)
+
+
 Example.r  : file for Example in the draft
              (I just listed a part of the results for brevity)
 Example.out : Output after running Example.r 

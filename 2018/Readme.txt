@@ -1,3 +1,5 @@
+R Codes for Examples in the paper (https://doi.org/10.1177/1748301818779007)
+
 
 Example-A: normal data   (right-censored)
 

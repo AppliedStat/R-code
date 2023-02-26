@@ -1,3 +1,5 @@
+R Codes for Examples in the paper 
+
 Anomaly Detection Using Robust Estimators Under Normal Distribution
 
 * anomaly.R : Collection of R functions
