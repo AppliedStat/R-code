@@ -6,15 +6,20 @@ source ("https://raw.githubusercontent.com/AppliedStat/R-code/master/2024b/fnmw4
 
 #============================================================================
 # Simulated Data
-Strength = 
-c(0.754, 0.279, 0.261, 0.902, 0.323, 1.16,  1.264, 0.632, 2,     0.174,
-  0.135, 0.182, 0.205, 0.019, 0.101, 0.419, 0.106, 0.22,  1.109, 0.312 )
-Mode = 
-list(1L, 2L, 2L, 1L, 2L, 3L, 2L, 3L, 0L, c(3,1), 
-     2L, 2L, 2L, 2L, 2L, 2L, 3L, 2L, 2L, c(2,1,3))
-
+X = c(0.9189, 0.0610, 0.0783, 0.0686, 1.0000, 0.3857, 0.2394, 0.3201, 0.0911, 0.5572, 
+      0.4759, 0.2178, 0.0684, 0.1477, 0.5894, 0.1543, 0.3881, 0.7628, 0.1326, 0.0824,
+      0.0950, 0.0726, 0.4851, 0.3980, 1.0000, 0.3474, 0.0281, 1.0000, 0.1073, 0.1691, 
+      1.0000, 0.2348, 0.0916, 0.1094, 0.0400, 1.0000, 0.8260, 0.1839, 0.9372, 0.0261,
+      1.0000, 0.5459, 0.3801, 0.0573, 0.1087, 0.1768, 0.5211, 0.9155, 0.1643, 0.4421)
+d = list(
+1L, c(3,1), 3L, 3L, 0L, 3L, 2L, 2L, 1L, 1L, 
+1L, 3L, 2L, 2L, 2L, 2L, 2L, 1L, 3L, 2L, 
+2L, 3L, 3L, 2L, 0L, 1L, 2L, 0L, 3L, 1L, 
+0L, 2L, 3L, 3L, 3L, 0L, 2L, 2L, 1L, 2L, 
+0L, 1L, 2L, 3L, 2L, 1L, 1L, 2L, 3L, c(3,2,1))
+Strength = X; Mode=d
 #============================================================================
-X = Strength; d = Mode
+
 #============================================================================
 library(survival)
 
@@ -32,16 +37,6 @@ for ( i in 1:length(idx) ) {
 fit = survfit ( Surv(dataALL, (is.censored) )~1 )  ## ~1 is needed for new version
 Fall = 1 - fit$surv
 
-logT0 = log(fit$time[ is.censored==0 ])
-logT1 = log(fit$time[ is.censored> 0 ])
-
-loglog0 = log( -log(fit$surv[ is.censored==0 ]) )
-loglog1 = log( -log(fit$surv[ is.censored >0 ]) )
-
- xlim  = range( logT0, logT1, na.rm=TRUE )
- ylim1 = min( loglog0, loglog1, na.rm=TRUE )
- ylim2 = max( loglog0, loglog1, na.rm=TRUE )
-
 ##-----------------------------------------------------------------------
 ## BS Model 
 ##-----------------------------------------------------------------------
@@ -54,17 +49,17 @@ loglog1 = log( -log(fit$surv[ is.censored >0 ]) )
     pnorm(y3-1/y3,sd=alpha[3],lower.tail=FALSE) 
  }
  para.BS = BS.cm.QEM(X,d, eps=1.0E-3, maxits=1000, K=1000)
- FBS = 1-SBS(X, alpha=para.BS$alpha, beta=para.BS$beta)
- MSE = mean( (FBS-Fall)^2 )
+ FBS = 1-SBS(sort(X), alpha=para.BS$alpha, beta=para.BS$beta)
+ MSE= mean( (FBS-Fall)^2 )
 ##=========================================================================
 
 
 
 ##=========================================================================
-cat("\n\n ====================================\n")
+cat("\n\n =====================\n")
 cat(" MSE =", MSE)
 
-cat("\n\n ====================================\n")
+cat("\n\n =====================\n")
 cat(" BS parameter\n")
 print(para.BS)
 
