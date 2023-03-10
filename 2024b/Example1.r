@@ -30,13 +30,7 @@ Fall = ppoints( MicrobondC1 )
 ##-----------------------------------------------------------------------
 ## BS Model 
 ##-----------------------------------------------------------------------
- SBS <- function(q, alpha, beta)  {   # Survival function of BS
-    y1 = sqrt(q/beta[1])
-    y2 = sqrt(q/beta[2])
-    pnorm(y1-1/y1,sd=alpha[1],lower.tail=FALSE) * pnorm(y2-1/y2,sd=alpha[2],lower.tail=FALSE)
- }
  para.BS = BS.cm.QEM(X,d, maxits=500, eps=1.0E-5, K=1000)
-
  FBS = 1-SBS(sort(X), alpha=para.BS$alpha, beta=para.BS$beta)
  MSE = mean( (FBS-Fall)^2 )
 ##=========================================================================
