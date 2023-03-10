@@ -107,3 +107,15 @@ stBS <- function(n, alpha=1, beta=1, R=0)  {   # truncated at R
    return(beta*(1+gamp^2 + gamp*sqrt(gamp^2+2)))
 }
 
+#--------------------------------------------------------------------
+SBS <- function(x, alpha, beta)  {   # Survival function of BS
+   J = length(alpha) 
+   S = rep(1, length(x)) 
+   for (j in 1:J) {
+       y = sqrt(x/beta[j])
+       S = S * pnorm(y-1/y,sd=alpha[j],lower.tail=FALSE)
+   }
+   return(S)
+}
+
+
