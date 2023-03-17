@@ -28,7 +28,7 @@ function(X, M, alpha0, beta0, maxits=100, K=1000, eps=1.0E-3)  {
    EE = function(beta.new, X, U, Q,qbar,qbar.star, nk, K) {
        TINY = .Machine$double.eps
        BIG  = .Machine$double.xmax^0.5
-       if (beta.new<TINY) return( (1-TINY)*BIG )
+       if (beta.new<TINY) return( (1-beta.new)*BIG )
        ALPHA2 = mean(U*X+ (1-U)*qbar)/beta.new + beta.new*mean(U/X+(1-U)/qbar.star)-2
        OUT = -0.5*nk/beta.new + sum( U/(beta.new+X) ) +
              sum((1-U)*apply(1/(beta.new+Q), 1, mean)) -
