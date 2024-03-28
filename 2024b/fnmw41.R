@@ -2,7 +2,7 @@
 # EM: Birnbaum-Saunders Distribution Model
 # #########################################################################
 BS.cm.QEM <-
-function(X, M, alpha0, beta0, maxits=100, K=1000, eps=1.0E-3)  {
+function(X, M, alpha0, beta0, maxits=1000, K=1000, eps=1.0E-3)  {
    nk = length(X)
    J  = max(unlist(M))
    idx = unique( unlist(M) )
@@ -24,16 +24,16 @@ function(X, M, alpha0, beta0, maxits=100, K=1000, eps=1.0E-3)  {
    iter <- 0
    converged <- FALSE
    Q = array(dim=c(nk,K))
+   TINY = .Machine$double.eps
+   BIG  = .Machine$double.xmax^0.5
 
    EE = function(beta.new, X, U, Q,qbar,qbar.star, nk, K) {
-       TINY = .Machine$double.eps
-       BIG  = .Machine$double.xmax^0.5
        if (beta.new<TINY) return( (1-beta.new)*BIG )
        ALPHA2 = mean(U*X+ (1-U)*qbar)/beta.new + beta.new*mean(U/X+(1-U)/qbar.star)-2
        OUT = -0.5*nk/beta.new + sum( U/(beta.new+X) ) +
              sum((1-U)*apply(1/(beta.new+Q), 1, mean)) -
-             0.5*sum(U*(1/X - X/(beta.new^2)))/ALPHA2 - 
-             0.5*sum((1-U)*(1/qbar.star - qbar/(beta.new^2)))/ALPHA2 
+             0.5*sum(U*(1/X - X/(beta.new^2)))/ALPHA2 -
+             0.5*sum((1-U)*(1/qbar.star - qbar/(beta.new^2)))/ALPHA2
        return(OUT)
    }
 
@@ -52,7 +52,7 @@ function(X, M, alpha0, beta0, maxits=100, K=1000, eps=1.0E-3)  {
           qbar = apply(Q,1,mean)
           qbar.star = 1/apply(1/Q,1,mean)
 
-          lower = 1 / mean(1/X); upper = mean(X)
+          lower = min(TINY,1/mean(1/X)); upper = mean(X)
           tmp = uniroot(EE, interval=c(lower,upper), extendInt ="yes",
                         X=X, U=U, Q=Q, qbar=qbar, qbar.star=qbar.star, nk=nk,K=K)
           beta.new[j] = tmp$root
@@ -63,13 +63,13 @@ function(X, M, alpha0, beta0, maxits=100, K=1000, eps=1.0E-3)  {
       conv1 = all ( abs(alpha.new[jj]-alpha[jj]) < eps*abs(alpha.new[jj]) )
       conv2 = all ( abs(beta.new[jj] - beta[jj]) < eps*abs(beta.new[jj]) )
       converged = conv1 && conv2
-      alpha = alpha.new; beta = beta.new ; 
-      cat(".")
+      alpha = alpha.new; beta = beta.new ;
+      # cat(".")
     }
-    cat("\n * Done (BS) *\n\n")
+    # cat("\n * Done (BS) *\n\n")
     list ( alpha=alpha.new, beta=beta.new, iter=iter, conv=converged )
 }
-      
+
 #====================================================================
 # CDF of Birnbaum-Saunders distribution 
 pBS <- function(q, alpha=1, beta=1)  {
