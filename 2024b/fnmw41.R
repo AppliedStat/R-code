@@ -24,8 +24,8 @@ function(X, M, alpha0, beta0, maxits=1000, K=1000, eps=1.0E-3)  {
    iter <- 0
    converged <- FALSE
    Q = array(dim=c(nk,K))
-   TINY = .Machine$double.eps
-   BIG  = .Machine$double.xmax^0.5
+   TINY = .Machine$double.eps^0.2
+   BIG  = .Machine$double.xmax^0.1
 
    EE = function(beta.new, X, U, Q,qbar,qbar.star, nk, K) {
        if (beta.new<TINY) return( (1-beta.new)*BIG )
@@ -64,11 +64,13 @@ function(X, M, alpha0, beta0, maxits=1000, K=1000, eps=1.0E-3)  {
       conv2 = all ( abs(beta.new[jj] - beta[jj]) < eps*abs(beta.new[jj]) )
       converged = conv1 && conv2
       alpha = alpha.new; beta = beta.new ;
-      cat(".")
+      # cat(".")
     }
-    cat("\n * Done (BS) *\n\n")
+    # cat("\n * Done (BS) *\n\n")
     list ( alpha=alpha.new, beta=beta.new, iter=iter, conv=converged )
 }
+
+
 
 #====================================================================
 # CDF of Birnbaum-Saunders distribution 
