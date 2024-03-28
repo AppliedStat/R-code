@@ -64,9 +64,9 @@ function(X, M, alpha0, beta0, maxits=1000, K=1000, eps=1.0E-3)  {
       conv2 = all ( abs(beta.new[jj] - beta[jj]) < eps*abs(beta.new[jj]) )
       converged = conv1 && conv2
       alpha = alpha.new; beta = beta.new ;
-      # cat(".")
+      cat(".")
     }
-    # cat("\n * Done (BS) *\n\n")
+    cat("\n * Done (BS) *\n\n")
     list ( alpha=alpha.new, beta=beta.new, iter=iter, conv=converged )
 }
 
