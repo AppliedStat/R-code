@@ -1,6 +1,7 @@
-R Codes for Examples in the paper 
+R Codes for Examples in the following paper 
 
-Anomaly Detection Using Robust Estimators Under Normal Distribution
+Anomaly Detection Using Robust Estimators Under Normal Distribution (https://doi.org/10.33162/JAR.2023.6.23.2.134)
+
 
 * anomaly.R : Collection of R functions
 

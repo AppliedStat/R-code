@@ -1,4 +1,7 @@
-Anomaly Detection Based on Cross Validation Under Weibull Distribution
+R Codes for Examples in the following paper 
+
+Anomaly Detection Based on Cross Validation Under Weibull Distribution 
+
 
 * Wanomaly.R : Collection of R functions
 

@@ -1,6 +1,6 @@
-R Codes for Examples in the paper
+R Codes for Examples in the following paper
 
-A Note on Weibull Parameter Estimation with Interval Censoring Using the EM Algorithm
+A Note on Weibull Parameter Estimation with Interval Censoring Using the EM Algorithm (https://doi.org/10.3390/math11143156)
 
 * Rcc22.R : Collection of R functions
 

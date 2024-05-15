@@ -1,7 +1,9 @@
 R Codes for the examples in the following paper:
 
 Refah Alotaibi, Hoda Rezk, and Chanseok Park (2024). 
-Parameter Estimation of Inverse Weibull Distribution Under Competing Risks based on the Expectation-Maximization Algorithm
+Parameter Estimation of Inverse Weibull Distribution Under Competing Risks based on the Expectation-Maximization Algorithm.
+Quality and Reliability Engineering International 
+
 
 
 * Example1.r   : R file for Example 1 in the paper
