@@ -1,14 +1,13 @@
-Welcome to R on cspark Computer!
 
 
 ==================
  Weibull Model
 ==================
-$alpha
-[1] 2.764965 2.567973
-
 $lam
 [1] 0.1553227 0.1598500
+
+$alpha
+[1] 2.764965 2.567973
 
 $iter
 [1] 2
