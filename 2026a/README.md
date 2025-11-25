@@ -4,6 +4,7 @@
 
 Xiaopeng Chen, Xianglong Lian, Xuehong Gao, Tianli Xiao, and Chanseok Park (2026).
 Two hybrid genetic algorithms for the continuous $p$-center problem.
-*Engineering Optimization* Accepted for publication.
+*Engineering Optimization.*  
+Accepted for publication.
 
 
